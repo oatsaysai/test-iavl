@@ -1,0 +1,15 @@
+[[constraint]]
+  name = "github.com/labstack/echo"
+  version = "3.3.8"
+
+[[override]]
+  name = "github.com/tendermint/iavl"
+  version = "v0.12.0"
+
+[[override]]
+  name = "github.com/tendermint/tendermint"
+  version = "v0.29.1"
+
+[prune]
+  go-tests = true
+  unused-packages = true
