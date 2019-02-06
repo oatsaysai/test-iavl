@@ -18,8 +18,8 @@ var iavlTree *iavl.MutableTree
 func main() {
 
 	// IAVL
-	var dbType = getEnv("ABCI_DB_TYPE", "goleveldb")
-	var dbDir = getEnv("ABCI_DB_DIR_PATH", "./DB")
+	var dbType = getEnv("DB_TYPE", "goleveldb")
+	var dbDir = getEnv("DB_DIR_PATH", "./DB")
 	name := "db"
 	db := dbm.NewDB(name, dbm.DBBackendType(dbType), dbDir)
 	tree := iavl.NewMutableTree(db, 0)
@@ -43,7 +43,8 @@ func main() {
 	// Prometheus
 	go runProm()
 	// Server
-	e.Logger.Fatal(e.Start(":" + "8080"))
+	var serverPort = getEnv("SERVER_PORT", "8080")
+	e.Logger.Fatal(e.Start(":" + serverPort))
 }
 
 func runProm() {

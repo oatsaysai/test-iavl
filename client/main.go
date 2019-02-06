@@ -64,7 +64,7 @@ func randStringRunes(n int) string {
 }
 
 func setKV() {
-	serverAddr := "http://localhost:8080"
+	var serverAddr = getEnv("SERVER_ADDRESS", "http://127.0.0.1:8080")
 	key := randStringRunes(32)
 	value := randStringRunes(32)
 	var URL *url.URL
